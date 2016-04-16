@@ -43,7 +43,8 @@ def index():
         'scope',
         'identify email connections guilds guilds.join')
     discord = make_session(scope=scope.split(' '))
-    authorization_url, state = discord.authorization_url(AUTHORIZATION_BASE_URL)
+    authorization_url, state = discord.authorization_url(AUTHORIZATION_BASE_URL,
+                                                        access_type="offline")
     session['oauth2_state'] = state
     return redirect(authorization_url)
 
